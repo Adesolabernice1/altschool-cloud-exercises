@@ -4,7 +4,7 @@
 
 ### Steps:
 
-- I ran the command below to update my package index: `sudo apt-get update`
+- I ran the command following to update my package index: `sudo apt-get update`
 
 - I install software-properties-common, which adds management for additional software sources: `sudo apt -y install software-properties-common`
 
