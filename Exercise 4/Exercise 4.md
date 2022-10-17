@@ -14,5 +14,5 @@
 
 - To check the version installed I run: `php -v` -- See output below:
 
-![php7]()
+![php7](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%204/php_v.png)
 
