@@ -15,7 +15,7 @@
 
 To confirm the groups were successfully created, I ran the command: 
 
-`tail /etc/group -- See command output below
+`tail /etc/group` -- See command output below
 
 > ![tail /etc/group](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%203/etc_group.png)
 <br>
