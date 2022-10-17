@@ -13,7 +13,11 @@
 
 `groupadd engineering` -- Creates the `engineering` group
 
-To confirm the groups were successfully created, I ran the command: `tail /etc/group
+To confirm the groups were successfully created, I ran the command: 
+
+`tail /etc/group -- See command output below
+
+> ![tail /etc/group]()
 
 ## TASK 2: Create a user in each of the groups
 
