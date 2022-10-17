@@ -17,7 +17,8 @@ To confirm the groups were successfully created, I ran the command:
 
 `tail /etc/group -- See command output below
 
-> ![tail /etc/group]()
+> ![tail /etc/group](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%203/etc_group.png)
+<br>
 
 ## TASK 2: Create a user in each of the groups
 
@@ -35,6 +36,9 @@ I ran the following commands to create users:
 I ran this command to confirm that the users were created successfully:
 
 `tail /etc/passwd` --See command output below
+
+> ![tail /etc/passwd](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%203/etc_passwd.png)
+<br>
 
 ## TASK 3: Generate SSH keys for the user in the admin group
 
