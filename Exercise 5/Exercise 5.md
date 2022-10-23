@@ -14,3 +14,18 @@
 `git config -l`
 
 Output
+
+![git config -l](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%205/git%20config%20-l.png)
+
+`git remote -v`
+
+Output
+
+![git remote -v](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%205/git%20remote%20-v.png)
+
+`git log`
+
+Output
+
+![git log](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%205/git%20log.png)
+
