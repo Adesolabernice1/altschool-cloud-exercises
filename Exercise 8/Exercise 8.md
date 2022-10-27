@@ -24,9 +24,7 @@ date("F d, Y h:i:s A e", time());
 - Added my server to the inventory file by adding it's IP address to the file
 
 Inventory file:
-[inventory]()
-
-Verify your inventory. If you created your inventory in a directory other than your home directory, specify the full path with the -i option.
+[inventory](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%208/inventory)
 
 - I verified my inventory by running the command: `ansible-inventory -i inventory.yaml --list`
 
