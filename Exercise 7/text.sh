@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Usage: A sample shell script to save system memory (RAM) usage at every hour, and forward cumulative hourly memory usage to sys_admin at 00:00 hours
+# Usage: A sample shell script to save system memory (RAM) usage at every hour, and forward cumulative hourly memory usage to sys_admin at 01:10 hours
 
 # Author: Adesola Ogundele
 
@@ -74,10 +74,10 @@ echo "" >> ${LOG_FILE}; echo "" >> ${LOG_FILE}
 # currentUsersHome=$HOME  -- For test purposes only
 # cp ${LOG_FILE} $HOME  -- For test purposes only
 
-# Send email to sys_admin at 12am
+# Send email to sys_admin at 1am
 currentTime=$(date +%H:%M)
 
-if [ ${currentTime} = 00:00 ];
+if [ ${currentTime} = 01:10 ];
     then mail ${admin_mail} < ${LOG_FILE} &&
     # Sleep for 10 minutes and delete the previous log file
     sleep 10m &&
