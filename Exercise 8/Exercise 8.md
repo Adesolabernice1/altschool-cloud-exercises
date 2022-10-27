@@ -24,7 +24,7 @@ date("F d, Y h:i:s A e", time());
 - Added my server to the inventory file by adding it's IP address to the file
 
 Inventory file:
-[inventory](https://github.com/philemonnwanne/altschool-cloud-exercises/blob/main/Month-02/Exercise-08/inventory.yaml)
+[inventory]()
 
 Verify your inventory. If you created your inventory in a directory other than your home directory, specify the full path with the -i option.
 
@@ -43,12 +43,12 @@ vagrant@local:/etc/ansible$ ansible-inventory inventory.yaml --list
         ]
     },
         "hosts": [
-            "172.19.0.2"
+            "192.168.56.7"
         ]
 }
 ```
 
-- Pinged the managed node in my inventory using: `ansible virtualmachines -m ping -i inventory.yaml`
+- Pinged the managed node in my inventory using: `ansible all -m ping -i inventory.yaml`
 
 
 Output Below:
