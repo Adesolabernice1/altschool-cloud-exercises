@@ -30,7 +30,7 @@ Inventory file:
 
 Output Below:
 ```ruby
-vagrant@local:/etc/ansible$ ansible-inventory inventory.yaml --list
+vagrant@server:/etc/ansible$ ansible-inventory inventory.yaml --list
 {
     "_meta": {
         "hostvars": {}
@@ -51,7 +51,7 @@ vagrant@local:/etc/ansible$ ansible-inventory inventory.yaml --list
 
 Output Below:
 ```ruby
-vagrant@local:~$ ansible servers -m ping -i inventory.yaml
+vagrant@server:~$ ansible servers -m ping -i inventory.yaml
 amazon-server | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python3"
@@ -73,12 +73,12 @@ Output Here;
 
 ###### Intial output of the timezonectl before modification by the ansible controller:
 ```bash
-vagrant@remote:~$ cat /etc/timezone
-America/Aruba
+vagrant@client:~$ cat /etc/timezone
+Europe/London
 ```
 
 ##### Final output of timezonectl:
 ```bash
-vagrant@remote:~$ cat /etc/timezone
+vagrant@client:~$ cat /etc/timezone
 Africa/Lagos
 ```
