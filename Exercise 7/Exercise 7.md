@@ -61,4 +61,4 @@ With `crontab -e` I was able to create and edit my first crontab. I have attache
 [cronjob](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%207/cronjob)
 
 #### Mail Output
-[mail]()
+[mail](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%207/cronjob%20email.jpeg)
