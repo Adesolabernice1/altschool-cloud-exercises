@@ -12,7 +12,7 @@
 
 #### SCRIPT
 1. I created a bash script to execute all neccessary commands in a predefined order. 
-> Link here: [script]()
+> Link here: [script](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%207/text.sh)
 
 #### MAIL
 For my machine to be able to send a mail I installed an SMTP server by running the following commands:
@@ -58,7 +58,7 @@ Next thing I did after writing my bash script and setting up my mail was to set 
 To carry this out I had to install a crontab since it was the first ever to be run on my vm.
 With `crontab -e` I was able to create and edit my first crontab. I have attached my configuration below:
 
-[crontab]()
+[cronjob](https://github.com/Adesolabernice1/altschool-cloud-exercises/blob/main/Exercise%207/cronjob)
 
 #### Mail Output
 [mail]()
