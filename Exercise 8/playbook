@@ -1,5 +1,5 @@
 ---
-- name: deploy apache2 on host server[remote]
+- name: deploy apache2 on host server[client]
   hosts: amazon-server
   become: true # Perform all the Ansible playbook tasks as another user.
   become_user: root # Default username to be used by Ansible
@@ -41,8 +41,8 @@
       timezone:
         name: Africa/Lagos
 
-    - name: Copy an "index.php" file to the host server[remote]
+    - name: Copy an "index.php" file to the host server[client]
       ansible.builtin.copy:
         src: /home/vagrant/index.php
         dest: /var/www/html/index.php
-        remote_src: no
+        client_src: no
