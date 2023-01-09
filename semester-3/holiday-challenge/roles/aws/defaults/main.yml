@@ -1,0 +1,5 @@
+instance_type: t2.micro
+amazon_image: ami-0b5eea76982371e91
+nat_image: ami-04027ecc3f40c1801
+region: us-east-1
+ubuntu_image: ami-0574da719dca65348
