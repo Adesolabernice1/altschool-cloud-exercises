@@ -1,0 +1,55 @@
+---
+# create the alb target group
+- name: create a target group for the application load balancer
+  community.aws.elb_target_group:
+    name: alb-tag-grp
+    region: "{{ region }}"
+    protocol: http
+    port: 80
+    vpc_id: "{{ vpc.vpc.id }}"
+    health_check_protocol: http
+    health_check_path: /
+    health_check_interval: 30
+    health_check_timeout: 5
+    healthy_threshold_count: 2
+    unhealthy_threshold_count: 10
+    successful_response_codes: "200-299"
+    targets:
+      - Id: "{{ webserver_1a.instances[0].instance_id }}"
+        Port: 80
+      - Id: "{{ webserver_1b.instances[0].instance_id }}"
+        Port: 80
+    state: present
+  register: lb_target_group
+  retries: 10
+  until: lb_target_group is not failed
+  delay: 5
+
+# create the alb
+- name: create a load balancer for the web server imstances
+  amazon.aws.elb_application_lb:
+    name: challenge-alb
+    region: "{{ region }}"
+    security_groups:
+      - "{{ alb_secgrp.group_id }}"
+    ip_address_type: ipv4
+    scheme: internet-facing
+    subnets:
+      - "{{ public_az_1a.subnet.id }}"
+      - "{{ public_az_1b.subnet.id }}"
+    listeners:
+      - Protocol: HTTP
+        Port: 80
+        DefaultActions:
+          - Type: forward
+            TargetGroupName: "{{ lb_target_group.target_group_name }}"
+      - Protocol: HTTPS
+        Port: 443
+        DefaultActions:
+          - Type: forward
+            TargetGroupName: "{{ lb_target_group.target_group_name }}"
+        Certificates:
+          - CertificateArn:  "{{ ssl_cert }}"
+        SslPolicy: ELBSecurityPolicy-2015-05
+    state: present
+  register: alb

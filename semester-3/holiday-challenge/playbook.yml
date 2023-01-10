@@ -1,0 +1,8 @@
+---
+- name: configure and deploy the stateless web app
+  hosts: localhost
+  connection: local
+  roles:
+    - aws
+  
+

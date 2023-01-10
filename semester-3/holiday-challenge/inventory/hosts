@@ -1,0 +1,10 @@
+localhost:
+  hosts: 127.0.0.1
+
+[tag_webserver:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o ProxyCommand="ssh -W %h:%p -q {{ bastion_user }}@{{ bastion_ip }}"'
+bastion_user=ec2-user
+ansible_ssh_user=ubuntu
+IdentityFile=/home/vagrant/my-key.pem
+bastion_ip=bastion_02.instances[0].public_ip_address
+

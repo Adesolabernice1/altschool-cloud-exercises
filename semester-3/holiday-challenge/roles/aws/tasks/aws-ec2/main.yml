@@ -1,0 +1,6 @@
+---
+- name: create the web instances
+  import_tasks: bastion.yml
+
+- name: create the bastion instances
+  import_tasks: webinstance.yml

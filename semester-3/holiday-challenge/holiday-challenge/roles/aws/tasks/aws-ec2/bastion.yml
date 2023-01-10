@@ -1,0 +1,39 @@
+---
+- name: create a bastion host
+  amazon.aws.ec2_instance:
+    name: bastion-1a
+    key_name: ec2-key
+    vpc_subnet_id: "{{ public_az_1a.subnet.id }}"
+    instance_type: t2.micro
+    security_group: "{{ bastion_secgrp.group_id }}"
+    network:
+      assign_public_ip: true
+      source_dest_check: false
+    image_id: "{{ nat_image }}"
+    tags:
+      name: bastion
+    wait: true
+    wait_timeout: 200
+  register: bastion_host_1a
+
+- name: create a bastion host
+  amazon.aws.ec2_instance:
+    name: bastion-1b
+    key_name: ec2-key
+    vpc_subnet_id: "{{ public_az_1b.subnet.id }}"
+    instance_type: t2.micro
+    security_group: "{{ bastion_secgrp.group_id }}"
+    network:
+      assign_public_ip: true
+      source_dest_check: false
+    image_id: "{{ nat_image }}"
+    tags:
+      name: bastion
+    wait: true
+    wait_timeout: 200
+  register: bastion_host_1b
+
+- name: delay
+  ansible.builtin.wait_for:
+    timeout: 300
+  delegate_to: localhost

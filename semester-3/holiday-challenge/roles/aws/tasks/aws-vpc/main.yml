@@ -1,0 +1,79 @@
+--- 
+# vpc core
+- name: create a vpc
+  amazon.aws.ec2_vpc_net:
+    name: "{{ my_vpc }}"
+    cidr_block: "{{ vpc_block }}"
+    region: "{{ region }}"
+    state: present
+    tags:
+      module: ec2_vpc
+    tenancy: default
+  register: vpc
+
+# subnets
+- name: create public subnet 1a
+  amazon.aws.ec2_vpc_subnet:
+    vpc_id: "{{ vpc.vpc.id }}"
+    state: present
+    az: "{{ public_az_1a }}"
+    cidr: "{{ public_az_1a_block }}"
+    map_public: true
+    tags:
+      Name: "{{ public_subnet_1a }}"
+  register: public_az_1a
+
+- name: create public subnet 1b
+  amazon.aws.ec2_vpc_subnet:
+    vpc_id: "{{ vpc.vpc.id }}"
+    state: present
+    az: "{{ public_az_1b }}"
+    cidr: "{{ public_az_1b_block }}"
+    map_public: true
+    tags:
+      Name: "{{ public_subnet_1b }}"
+  register: public_az_1b
+
+- name: create private subnet 1a
+  amazon.aws.ec2_vpc_subnet:
+    vpc_id: "{{ vpc.vpc.id }}"
+    state: present
+    az: "{{ private_az_1a }}"
+    cidr: "{{ private_az_1a_block }}"
+    tags:
+      Name: "{{ private_subnet_1a }}"
+  register: private_sub_1a
+
+- name: create private subnet 1b
+  amazon.aws.ec2_vpc_subnet:
+    vpc_id: "{{ vpc.vpc.id }}"
+    state: present
+    az: "{{ private_az_1b }}"
+    cidr: "{{ private_az_1b_block }}"
+    tags:
+      Name: "{{ private_subnet_1b }}"
+  register: private_sub_1b
+
+# igw
+- name: create the internet gateway
+  amazon.aws.ec2_vpc_igw:
+    vpc_id: "{{ vpc.vpc.id }}"
+    state: present
+    tags:
+      Name: "{{ igw }}"
+  register: igw
+
+# rtb
+- name: create a route table for the public subnets
+  amazon.aws.ec2_vpc_route_table:
+    vpc_id: "{{ vpc.vpc.id }}"
+    region: "{{ aws_region }}"
+    subnets:
+      - "{{ public_az_1a.subnet.id }}"
+      - "{{ public_az_1b.subnet.id }}"
+    routes:
+    - dest: 0.0.0.0/0
+      gateway_id: "{{ igw.gateway_id }}"
+    tags:
+      Name: "{{ public_route_table }}"
+
