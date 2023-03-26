@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "project-app-ingress"
+  # namespace: "project-app"
+  annotations:
+  # Core Ingress Settings  
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+# SSL Setting - 1
+    ## SSL Settings
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}, {"HTTP":80}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:816652808963:certificate/1fd1d019-8e60-4345-afeb-b4de355ddfaa
+    external-dns.alpha.kubernetes.io/hostname: project-app.adesolabernice.me # give your domain name here
+  labels:
+    app: project-app-ingress
+# SSL Setting - 2
+spec:
+  rules:
+  - http:
+      paths:  
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80      
